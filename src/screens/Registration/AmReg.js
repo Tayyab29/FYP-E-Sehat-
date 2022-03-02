@@ -120,12 +120,12 @@ const AmReg = ( {navigation}) => {
       <Button
         mode="contained"
         onPress={_onSignUpPressed}
-        style={{ marginTop: 20 }}>
+        style={{ marginTop: 6 }}>
         Sign Up
       </Button>
       <View style={styles.row}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
+        <TouchableOpacity onPress={() => navigation.goBack('LoginScreen')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>

@@ -99,12 +99,12 @@ const PaReg = ( {props, navigation, route}) => {
       <Button
         mode="contained"
         onPress = {_onSignUpPressed}
-        style={{marginTop: 20 }}>
+        style={{marginTop: 6 }}>
         Sign Up
       </Button>
       <View style={styles.row}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
+        <TouchableOpacity onPress={() => navigation.goBack('LoginScreen')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -117,7 +117,8 @@ const PaReg = ( {props, navigation, route}) => {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    marginTop: 4,
+    marginTop: 6,
+    marginBottom: 20
   },
   link: {
     fontWeight: 'bold',

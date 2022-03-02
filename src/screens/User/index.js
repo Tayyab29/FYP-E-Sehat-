@@ -6,7 +6,6 @@ export { default as DocReg } from '../Registration/DocReg';
 export { default as LaReg } from '../Registration/LaReg';
 export { default as PaReg } from '../Registration/PaReg';
 export { default as PharReg } from '../Registration/PharReg';
-export { default as RegisterScreen } from './RegisterScreen';
 export { default as ResetPasswordScreen } from '../ResetPasswordScreen';
 export { default as Dashboard } from '../Dashboard';
 export { default as SplashScreen } from '../SplashScreen';

@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.surface,
   },
   description: {
-    fontSize: 13,
+    fontSize: 12,
     color: theme.colors.secondary,
-    paddingTop: 8,
+    paddingTop: 6,
   },
   error: {
-    fontSize: 13,
+    fontSize: 12,
     color: theme.colors.error,
-    paddingTop: 8,
+    paddingTop: 6,
   },
 });

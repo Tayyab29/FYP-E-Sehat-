@@ -31,7 +31,7 @@ const Dashboard = ({navigation}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
+      <StatusBar backgroundColor="transparent" translucent={true}/>
       <View style={styles.sliderContainer}>
         <Swiper
           autoplay

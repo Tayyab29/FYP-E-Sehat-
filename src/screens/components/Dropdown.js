@@ -6,16 +6,21 @@ import {
   Center,
   NativeBaseProvider,
 } from "native-base"
+import { theme } from '../core/theme'
 
 export const Dropdown = () => {
   let [city, setCity] = React.useState("")
   return (
-    <VStack alignItems="center" fontWeight ="bold">
+    <VStack  alignItems="center" fontWeight ="bold">
       <Select
         h = {12}
-        fontSize="md"
+        borderWidth={1}
+        selectionColor={theme.colors.primary}
+        borderColor= "#524d4d"
+        fontSize="17"
+        fontWeight ="900"
         selectedValue={city}
-        minWidth="280"
+        minWidth="173"
         accessibilityLabel="Choose City"
         placeholder="Choose City"
         _selectedItem={{
