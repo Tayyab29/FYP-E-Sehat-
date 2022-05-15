@@ -3,8 +3,8 @@
   "expoServerPort": 19000,
   "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://2n-up8.tayyab-shah.fyp-esehat---int.exp.direct",
+  "packagerNgrokUrl": "https://2n-up8.tayyab-shah.fyp-esehat---int.exp.direct",
+  "ngrokPid": 11920,
   "webpackServerPort": null
 }

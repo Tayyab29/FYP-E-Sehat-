@@ -1,14 +1,25 @@
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet,View } from 'react-native'
 
 export default function Logo() {
-  return <Image source={require('../asset/front.jpg')} style={styles.image} />
+  return(
+    <View style= {styles.cardimg}>
+      <Image source={require('../asset/sehat.png')}
+      resizeMode = 'contain' style={styles.image} />
+      </View>
+    )
 }
 
 const styles = StyleSheet.create({
   image: {
-    width: 240,
-    height: 180,
-    marginBottom: 15,
+    width: '100%',
+    height: '100%',
+    padding: 15,
   },
+  cardimg: {
+    width: '100%',
+    height: '20%',
+    marginBottom: 35,
+    marginTop:35
+  }
 })

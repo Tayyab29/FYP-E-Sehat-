@@ -2,29 +2,26 @@ import React from 'react';
 import {
   View,
   Text,
+  TouchableOpacity,
   Image,
   StyleSheet,
 } from 'react-native';
-
+  import { Avatar } from 'react-native-paper';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import SearchBar from './components/SearchBar'
 
 export default function Doctor({ navigation }) {
   return (
+    <ScrollView style={styles.container}>
+      <SearchBar/>
     <View style={styles.cardsWrapper}>
-        <Text
-          style={{
-            alignSelf: 'center',
-            fontSize: 18,
-            fontWeight: 'bold',
-            color: '#333',
-          }}>
-          Doctors
-        </Text>
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} 
+        onPress = {()=>(navigation.navigate('DocProfile'))}>
           <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('./asset/image.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
+          <Avatar.Image
+            source={require('./asset/image.jpg')}
+            style={styles.cardImg}
+              size= {100}
             />
           </View>
           <View style={styles.cardInfo}>
@@ -34,13 +31,13 @@ export default function Doctor({ navigation }) {
               Experince: 10Years
             </Text>
           </View>
-        </View>
-        <View style={styles.card}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
           <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('./asset/image2.jpeg')}
-              resizeMode="cover"
-              style={styles.cardImg}
+          <Avatar.Image
+            source={require('./asset/image2.jpeg')}
+            style={styles.cardImg}
+              size= {100}
             />
           </View>
           <View style={styles.cardInfo}>
@@ -50,13 +47,13 @@ export default function Doctor({ navigation }) {
               Experince: 12Years
             </Text>
           </View>
-        </View>
-        <View style={styles.card}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
           <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('./asset/image3.jpeg')}
-              resizeMode="cover"
-              style={styles.cardImg}
+          <Avatar.Image
+            source={require('./asset/image3.jpeg')}
+            style={styles.cardImg}
+              size= {100}
             />
           </View>
           <View style={styles.cardInfo}>
@@ -66,15 +63,19 @@ export default function Doctor({ navigation }) {
               Experince: 5Years
             </Text>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
-    
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   cardsWrapper: {
-    marginTop: 20,
+    marginTop: 5,
     width: '90%',
+    height: '100%',
     alignSelf: 'center',
   },
   card: {
@@ -94,6 +95,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     alignSelf: 'center',
+    backgroundColor: "transparent",
     borderRadius: 8,
     borderBottomRightRadius: 0,
     borderTopRightRadius: 0,
@@ -110,11 +112,11 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 16,
     marginBottom: 3,
   },
   cardDetails: {
-    fontSize: 14,
+    fontSize: 15,
     color: '#444',
   },
 });

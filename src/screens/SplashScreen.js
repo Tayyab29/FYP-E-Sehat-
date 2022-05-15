@@ -13,7 +13,7 @@ import { theme } from './core/theme';
 const SplashScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-      <StatusBar animated={true} backgroundColor="transparent" translucent={true}/>
+      <StatusBar backgroundColor="skyblue" translucent={true}/>
       {/* Onboarding Image */}
       <Image source={require('./asset/start.jpg')} style={style.image} />
 

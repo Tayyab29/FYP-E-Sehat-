@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Background from './components/Background';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import Logo from './components/Logo';
 import Header from './components/Header';
 import TextInput from './components/TextInput';
@@ -19,7 +19,8 @@ export default function ResetPasswordScreen({ navigation }) {
   };
 
   return (
-    <Background>
+    <View style= {styles.container}>
+      <StatusBar backgroundColor="skyblue" translucent={true}/>
       <Logo />
       <Header>Restore Password</Header>
       <TextInput
@@ -41,6 +42,15 @@ export default function ResetPasswordScreen({ navigation }) {
         style={{ marginTop: 16 }}>
         Send email
       </Button>
-    </Background>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '85%',
+    alignSelf:'center',
+    alignItems: 'center',
+  },
+})

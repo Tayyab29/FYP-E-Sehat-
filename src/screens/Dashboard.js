@@ -13,25 +13,28 @@ import Swiper from 'react-native-swiper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Avatar } from 'react-native-paper';
+
 
 const Dashboard = ({navigation}) => {
   const theme = useTheme();
 
    const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-      console.log(4)
-      navigation.navigate('LoginScreen') 
+    navigation.navigate('LoginScreen')
+    // try {
+    //   await auth.signOut();
+    //   console.log(4)
+    //   navigation.navigate('LoginScreen') 
 
-    } catch (error) {
-      console.log(error);
-    }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar backgroundColor="transparent" translucent={true}/>
+      <StatusBar backgroundColor="skyblue" translucent={true}/>
       <View style={styles.sliderContainer}>
         <Swiper
           autoplay
@@ -66,7 +69,7 @@ const Dashboard = ({navigation}) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('Doctor', {title: 'Doctor'})
+            navigation.navigate('Category', {title: 'Category'})
           }>
           <View style={styles.categoryIcon}>
             <Fontisto name="doctor" size={35} color="#57D4EB" />
@@ -76,57 +79,65 @@ const Dashboard = ({navigation}) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('CardListScreen', {title: 'Fastfood Center'})
+            navigation.navigate('SearchNearbyAmbulances', {title: ''})
           }>
           <View style={styles.categoryIcon}>
             <MaterialCommunityIcons name="ambulance" size={35} color="#57D4EB"/>
           </View>
           <Text style={styles.categoryBtnTxt}>Find Ambulance</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() =>
+            navigation.navigate('SearchLabs', {title: ''})
+          }>
           <View style={styles.categoryIcon}>
             <Fontisto name="laboratory" size={35} color="#57D4EB" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Labs</Text>
+          <Text style={styles.categoryBtnTxt}>Find Labs</Text>
         </TouchableOpacity>
       </View>
       <View style={[styles.categoryContainer, {marginTop: 10}]}>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() =>
+            navigation.navigate('SearchNearbyPharmacies', {title: ''})
+          }>
           <View style={styles.categoryIcon}>
             <Fontisto name="pills" size={35} color="#57D4EB" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Order Medicine</Text>
+          <Text style={styles.categoryBtnTxt}>Find Pharmacies</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} onPress={() =>
+            navigation.navigate('BloodDonors', {title: ''})
+          }>
           <View style={styles.categoryIcon}>
             <Ionicons name="water" size={35} color="#57D4EB" />
           </View>
           <Text style={styles.categoryBtnTxt}>Blood Donor</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.categoryBtn} 
+        onPress={() => ('')}>
           <View style={styles.categoryIcon}>
-            <MaterialIcons name="expand-more" size={35} color="#57D4EB" />
+          <Icon name="notes-medical" size={35} color="#57D4EB" />
           </View>
-          <Text style={styles.categoryBtnTxt}>Show More</Text>
+          <Text style={styles.categoryBtnTxt}>Intake Chart</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.cardsWrapper}>
         <Text
           style={{
-            alignSelf: 'center',
+            alignSelf: 'flex-start',
             fontSize: 18,
             fontWeight: 'bold',
             color: '#333',
           }}>
-          Doctors
+          Top Specialists
         </Text>
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} 
+        onPress = {()=>('')}>
           <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('./asset/image.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
+          <Avatar.Image
+            source={require('./asset/image.jpg')}
+            style={styles.cardImg}
+              size= {100}
             />
           </View>
           <View style={styles.cardInfo}>
@@ -136,13 +147,13 @@ const Dashboard = ({navigation}) => {
               Experince: 10Years
             </Text>
           </View>
-        </View>
-        <View style={styles.card}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
           <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('./asset/image2.jpeg')}
-              resizeMode="cover"
-              style={styles.cardImg}
+          <Avatar.Image
+            source={require('./asset/image2.jpeg')}
+            style={styles.cardImg}
+              size= {100}
             />
           </View>
           <View style={styles.cardInfo}>
@@ -152,13 +163,13 @@ const Dashboard = ({navigation}) => {
               Experince: 12Years
             </Text>
           </View>
-        </View>
-        <View style={styles.card}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
           <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('./asset/image3.jpeg')}
-              resizeMode="cover"
-              style={styles.cardImg}
+          <Avatar.Image
+            source={require('./asset/image3.jpeg')}
+            style={styles.cardImg}
+              size= {100}
             />
           </View>
           <View style={styles.cardInfo}>
@@ -168,7 +179,7 @@ const Dashboard = ({navigation}) => {
               Experince: 5Years
             </Text>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -179,17 +190,17 @@ export default Dashboard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 1, 
+    backgroundColor: 'white'
   },
   sliderContainer: {
     height: 200,
-    width: '95%',
-    marginTop: 10,
+    width: '97%',
+    marginTop: 6,
     justifyContent: 'center',
     alignSelf: 'center',
     borderRadius: 8,
   },
-
-
   slide: {
     flex: 1,
     justifyContent: 'center',
@@ -204,7 +215,7 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     flexDirection: 'row',
-    width: '90%',
+    width: '94%',
     alignSelf: 'center',
     marginTop: 25,
     marginBottom: 10,
@@ -231,8 +242,9 @@ const styles = StyleSheet.create({
     color: '#1D889D',
   },
   cardsWrapper: {
-    marginTop: 20,
+    marginTop: 5,
     width: '90%',
+    height: '100%',
     alignSelf: 'center',
   },
   card: {
@@ -252,6 +264,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     alignSelf: 'center',
+    backgroundColor: "transparent",
     borderRadius: 8,
     borderBottomRightRadius: 0,
     borderTopRightRadius: 0,
@@ -268,11 +281,11 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 16,
     marginBottom: 3,
   },
   cardDetails: {
-    fontSize: 14,
+    fontSize: 15,
     color: '#444',
   },
 });

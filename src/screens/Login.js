@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, View,ScrollView } from 'react-native';
 import { Text } from 'react-native-paper';
-import Background from './components/Background';
 import Logo from './components/Logo';
 import Header from './components/Header';
 import Button from './components/Button';
@@ -20,6 +19,7 @@ export default function LoginScreen({ route }) {
   const navigation = useNavigation();
   const {otherParam}  = route.params;
 
+
   const onLoginPressed = () => {
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
@@ -30,9 +30,29 @@ export default function LoginScreen({ route }) {
       setPassword({ ...password, error: passwordError });
       return;
     }
-
-    navigation.navigate('Dashboard');
+    navigation.navigate('Root');
   };
+  // const Value = ()=> {
+  //   if (route.params.otherParam === 'PaReg'){
+  //     return 'Patient'
+  //   }
+  //   else if (route.params.otherParam === 'AmReg'){
+  //     return 'Patient'
+  //   }
+  //   else if (route.params.otherParam === 'PaReg'){
+  //     return 'Patient'
+  //   }
+  //   else if (route.params.otherParam === 'PaReg'){
+  //     return 'Patient'
+  //   }
+  //   else if (route.params.otherParam === 'PaReg'){
+  //     return 'Patient'
+  //   }
+  //   else if (route.params.otherParam === 'PaReg'){
+  //     return 'Patient'
+  //   }
+
+  // }
 
   //   const onLoginPressed = () => {
   //   try {
@@ -45,12 +65,13 @@ export default function LoginScreen({ route }) {
   //     console.log(error.message);
   //   }
   // };
-   
+
+
 
   return (
-    <Background>
+    <View style= {styles.container}>
       <Logo />
-      <Header>Welcome </Header>
+      <Header>Welcome  </Header>
       <TextInput
         label="Email"
         returnKeyType="next"
@@ -84,16 +105,22 @@ export default function LoginScreen({ route }) {
       <View style={styles.row}>
         <Text>Don’t have an account? </Text>
         <TouchableOpacity 
-          onPress={() => navigation.navigate(otherParam)}>
+          onPress={() => navigation.navigate('Genral', {otherParam})}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
-    </Background>
+      </View>
   );
 }
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '85%',
+    alignSelf:'center',
+    alignItems: 'center',
+  },
   forgotPassword: {
     width: '100%',
     alignItems: 'flex-end',

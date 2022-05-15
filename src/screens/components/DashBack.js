@@ -1,9 +1,5 @@
 import React from 'react';
-import {StyleSheet, Image, Text, View } from 'react-native';
-import Logo from '../components/Logo';
-import Header from '../components/Header';
-import Paragraph from '../components/Paragraph';
-import Button from '../components/Button';
+import {StyleSheet, Image, View } from 'react-native';
 
 export default class DashBack extends React.Component {
   render(){

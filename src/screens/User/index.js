@@ -10,3 +10,5 @@ export { default as ResetPasswordScreen } from '../ResetPasswordScreen';
 export { default as Dashboard } from '../Dashboard';
 export { default as SplashScreen } from '../SplashScreen';
 export { default as Doctor } from '../Doctor';
+export { default as NotificationsTab } from '../NotificationsTab';
+export {default as DocProfile} from '../Doctor/DocProfile';

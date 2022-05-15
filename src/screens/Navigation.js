@@ -1,22 +1,23 @@
 import React from 'react';
 import { Provider } from 'react-native-paper';
-import { Image, Text, TouchableHighlight, View } from 'react-native';
+import { Text, View,Pressable } from 'react-native';
 import { Button } from 'react-native-paper';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { theme } from './core/theme';
+import {FontAwesome} from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import {
   Dashboard,
-  Doctor,
+  NotificationsTab,
+  StartScreen
 } from './User';
+
+
 // import Firebase from './firebase';
 // const auth = Firebase.auth();
 
-
-const Tab = createMaterialBottomTabNavigator();
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -52,45 +53,103 @@ const MyTabs =({navigation})=> {
   return (
 <Provider theme={theme}>
 <Tab.Navigator
-      initialRouteName="Home"
-      activeColor="#ffff"
+      initialRouteName="Dashboard"
+      activeColor="white"
       barStyle={{ backgroundColor: theme.colors.primary }}
-    >
+      screenOptions={{
+        tabBarActiveTintColor: "#18b4f5", 
+        tabBarInactiveTintColor: "white", 
+        tabBarActiveBackgroundColor: "#ffff", 
+        tabBarInactiveBackgroundColor: '#18b4f5'
+    }}>
       <Tab.Screen
-        name="Home"
+        name="Dashboard"
         component={Dashboard}
-        options={{
-          tabBarLabel: 'Home',
+        options={({navigation, route}) => ({
+          title: 'Sehat Markaz',
+          tabBarLabel: 'Dashboard',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
-          ),
-        }}
+            <MaterialCommunityIcons name="home" color={color} size={26} />),
+            // headerRight: () => (
+            //   <Pressable
+            //       onPress={() => navigation.navigate('NotificationsTab')}
+            //       style={({ pressed }) => ({
+            //           opacity: pressed ? 0.5 : 1,
+            //       })}>
+            //       <FontAwesome
+            //           name="bell-o"
+            //           size={25}
+            //           color='black'
+            //           style={{ marginRight: 20 }}
+            //       />
+            //   </Pressable>
+            //   ),
+        })}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="ViewProfile"
         component={SettingsScreen}
         options={{
           tabBarLabel: 'Profile',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" color={color} size={26} />
           ),
+          headerRight: () => (
+            <Pressable
+                onPress={() => navigation.navigate('NotificationsTab')}
+                style={({ pressed }) => ({
+                    opacity: pressed ? 0.5 : 1,
+                })}>
+                <FontAwesome
+                    name="bell-o"
+                    size={25}
+                    color='black'
+                    style={{ marginRight: 20 }}
+                />
+            </Pressable>
+            ),
         }}
-      />
+      /> */}
       <Tab.Screen
-        name="settings"
-        component={Doctor}
+        name="Profile"
+        component={NotificationsTab}
         options={{
-          tabBarLabel: 'Settings',
+          tabBarLabel: 'Profile',
+          headerTitleAlign: 'center',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cog" color={color} size={26} />
+            <FontAwesome name="user" size={25} color= {color} />
           ),
         }}
       />
       <Tab.Screen
-        name="logout"
+        name="Appointments"
+        component={NotificationsTab}
+        options={{
+          tabBarLabel: 'Appointments',
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="calendar-clock" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notiications"
+        component={NotificationsTab}
+        options={{
+          tabBarLabel: 'Notiications',
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="bell" size={25} color= {color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Logout"
         component={Signout}
         options={{
-          tabBarLabel: 'LogOut',
+          tabBarLabel: 'LogOut', 
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="logout" color={color} size={26} />
           ),
